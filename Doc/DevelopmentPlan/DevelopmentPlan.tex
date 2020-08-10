@@ -1,0 +1,112 @@
+\documentclass{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+
+\title{SE 3XA3: Development Plan\\Space Shooter}
+
+\author{Team \#105, Space Shooter
+		\\ Nishanth Raveendran and raveendn
+		\\ Dananjay Prabaharan and prabahad
+		\\ Hongzhao Tan and tanh10
+}
+
+\date{}
+
+\begin{document}
+
+\begin{table}[hp]
+\caption{Revision History} \label{TblRevisionHistory}
+\begin{tabularx}{\textwidth}{llX}
+\toprule
+\textbf{Date} & \textbf{Developer(s)} & \textbf{Change}\\
+\midrule
+Jan 30 & Team 105  & Initial Development Plan\\
+\textcolor{red}{April 6} & \textcolor{red}{Team 105} & \textcolor{red}{Rev1 Updates - Updated Project Review and Coding Style}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\maketitle
+
+Space Shooter is an online arcade game that allows the user to shoot upcoming obstacles using a spaceship and travel as long as possible. The development plan outlines how the team is going to keep organized and up-to-date while implementing the game. The development plan is broken down into the following main sections: Team Meeting Plan, Team Communication Plan, Team Member Roles, Git Workflow Plan, Proof of Concept Demonstration Plan, Technology, Coding Style, Project Schedule, and Project Review. 
+
+\section{Team Meeting Plan}
+
+\subsection{Time, Place and Frequency of Team Meetings}
+Team \#105 have 2 meetings every week on Monday and Wednesday during the development other than the week of mid-term recess. The team meetings will take place at Room 236, Information Technology Building in the labs (9:30 a.m - 11:20 a.m) of the course SFWR ENG 3XA3 after completing the lab exercises. Additional meetings will be scheduled once the team consensus is reached.
+\subsection{Roles in Team Meetings}
+The team member Hongzhao Tan will be the default chair of the meetings. The chair of a meeting will be responsible for making sure the topics on the meeting agenda are all discussed, taking notes on the decisions made during the meeting, and writing a statement on decisions made. 
+\subsection{Meeting Agenda}
+The meeting agendas for future team meetings could evolve as time pass. As rule of Meeting Agendas, all of the topics in meetings shall be added into agendas only after reaching the team consensus. In addition, "Review the agenda" shall be the first topic of every agenda, and "Is any additional team meeting needed for the rest of current week, if yes, when and where shall the meeting take place?" shall be the last topic of every meeting agenda. The statement of decisions written at the end of the meetings shall be clear enough for every team member to know what he is responsible for after the meeting. Meetings shall be started and ended on time. The decision of each topic discussed in meetings shall be confirmed with team consensus.
+ \begin{table}[h!]
+  \begin{center}
+    \caption{Example of Meeting Agendas.}
+    \label{tab:table1}
+    \begin{tabular}{|p{2cm}|c|c|p{3cm}|p{3cm}|}
+      \hline
+      \textbf{Time} & \textbf{Location} & \textbf{Chair} & \textbf{Topics} & \textbf{Statement of Decisions}\\
+      \hline
+      2019/01/29 9:30 a.m - 11:30 a.m & ITB 236 & Nishanth Raveendran & 1. Review the agenda \newline 2. Spliting the responsibilities for different parts of Development Plan 3. Is any additional meeting needed for the rest of this week? & 1. Hongzhao Tan is responsible for writing Team Meeting Plan, Technologies, and Coding Style.\newline 2. Nishanth Raveendran is responsible for writing Git Workflow Plan and Proof of Concept Demonstration Plan. \newline 3. Dananjay Prabaharan is responsible for writing The Introduction, and Team Communication Plan, and assigning Team Member Roles\\ \hline
+      ... & ... & ... & ... & ...\\ \hline
+    \end{tabular}
+  \end{center}
+ \end{table}
+
+
+\section{Team Communication Plan}
+
+All team member's primary communication would be done through Facebook Messenger. The team members would be required to provide updates on messenger twice a week in order to be caught up on each member's progress. Backup communication would be done through a phone call if a team member is not responding online for a long period of time. All members from the team have exchanged each other's contact information. The Monday and Wednesday labs would be utilized to provide additional updates on the project and debug any errors another team member encounters. 
+
+\section{Team Member Roles}
+
+Team 105 has decided to split up all the coding and documentation work evenly throughout the project as it would be a lot easier to keep up to date and organized. The work would be split according to each team member's strengths and preferences. After each in-person team meeting, it would documented on the meeting minutes which 'hat' each team members wears for that week. Team 105 has decided to elect Nishanth Raveendran to be the team leader to primarily communicate with TAs with current progresses on the project. 
+
+\section{Git Workflow Plan}
+
+The team will follow a centralized workflow plan, where a central repository will serve as the single point of entry for all changes to the project. This workflow will be beneficial for this team as each member has an equal role in the development process. Each member will need access to the entire project to update and test features, and this workflow plan allows for that. Each push to the master branch will be labeled with a brief description of the content of the update. For every milestone, there will be one major push to master which will update the repository with the milestone. 
+
+\section{Proof of Concept Demonstration Plan}
+
+For the proof of concept, we will demonstrate the upgrades and new features added to the original game, Space Shooter. The original code will be modularized to have cleaner code structure. The risks involved in this process may include damaging the code without the ability to retrieve its original functionality. We will also add new features and a new user interface to the game to enhance the experience. The risks involved in this include introducing bugs which could be game breaking. To prevent these risks, the team will thoroughly test each feature update before adding it to the master. We will follow standard testing practices to ensure a seamless development process.
+
+\section{Technology}
+    We will use Python as the programming language for development of our project. Hence, JupyterLab and IDLE will be employed as the IDEs.To improve our test efficiency and accuracy, we choose Modular Testing Framework as our testing framework. We will generate our documents with LaTeX and edit the LaTeX files online with Overleaf.  
+\section{Coding Style}
+1. Use full pathname location to import a module.\newline
+2. Try to use "implicit" false, such that using "if dummyvar" rather than "if dummyvar != []."\newline
+3. Neither use semicolon to terminate a line nor use semicolon to put two statements in one line. \newline
+\textcolor{red}{4. Keep the line length under 80 characters except for long imports, urls, long string constants, long comments and etc.} \newline
+\textcolor{red}{5. Every module, class, and function should start with a comment block to describe its content briefly.}\newline
+\textcolor{red}{6. Use the (\#\#) format to document the implementation.}\newline
+7. Explicitly close files when done with them.\newline
+8. Imports in separate lines (Avoid using "import sys, os")\newline
+\textcolor{red}{9. Use the following layouts for naming functions, variables and files (moduleName, ClassName, method\_name, ExceptioName, GLOBAL\_CONSTANT\_NAME, global\_var\_name, instance\_var\_name, function\_parameter\_name, local\_var\_name) }
+
+\section{Project Schedule}
+
+\textcolor{red}{See Gantt Chart at the following url:}
+\url{https://gitlab.cas.mcmaster.ca/raveendn/space-shooter/-/blob/master/ProjectSchedule/Project%20Gantt%20Chart.pdf}
+
+\textcolor{red}{GanttProject File at the following url:}
+\url{https://gitlab.cas.mcmaster.ca/raveendn/space-shooter/-/blob/master/ProjectSchedule/Project%20Gantt%20Chart.gan}
+
+\section{Project Review}
+\textcolor{red}{As a review to this project, most of the objectives set up in the documents are achieved.\\
+To be more specific, the meetings are held every week during the lab sections as planned, meeting agenda was made before each meeting with the specified format, and every team member had clear idea about what was his "homework" after each meeting. Nevertheless, the roles during the meetings was not perfectly complying with what was specified, due to occasional absence of team member(s) because of personal reason(s).\\
+During designing and developing the system, Nishanth did a great job leading the team as the team leader by actively communicating with the TAs to ask questions from the development team and trying his best to find concordance between different opinion from the team members. Other members of the team 
+The coding style specified in the development plan was followed during implementing the system.\\
+In terms of the new features, most of the features that was planned to be added into the original version of the open source project was implemented except for the features for the in-game shop and setting game difficulty due to the time constraint. }
+
+\end{document}

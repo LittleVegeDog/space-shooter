@@ -1,0 +1,778 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{graphicx}
+\usepackage{paralist}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{hhline}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{url}
+\usepackage{ulem}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{placeins}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+    rulecolor = black!50
+}
+\usepackage[round]{natbib}
+
+\oddsidemargin -10mm
+\evensidemargin -10mm
+\textwidth 160mm
+\textheight 200mm
+\renewcommand\baselinestretch{1.0}
+
+\pagestyle {plain}
+\pagenumbering{arabic}
+
+\newcounter{stepnum}
+
+%% Comments
+
+\usepackage{color}
+
+\newif\ifcomments\commentstrue
+
+\ifcomments
+\newcommand{\authornote}[3]{\textcolor{#1}{[#3 ---#2]}}
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\else
+\newcommand{\authornote}[3]{}
+\newcommand{\todo}[1]{}
+\fi
+
+\newcommand{\wss}[1]{\authornote{blue}{SS}{#1}}
+
+\title{SE 3XA3: Software Requirements Specification\\Space Shooter}
+\author{Team \#105, Space Shooter
+		\\ Hongzhao Tan, tanh10
+		\\ Nishanth Raveendran, raveendn
+		\\ Dananjay Prabaharan, prabahad}
+
+\begin {document}
+
+\maketitle
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+March 13, 2020 & 1.0 & Initial Draft\\
+\textcolor{red}{April 6, 2020} & \textcolor{red}{2.0} & \textcolor{red}{Rev1 Update - Added exceptions to internal functions, added Alien class, and updated the introduction to the document.}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+\FloatBarrier
+\newpage
+
+\newpage
+This Module Interface Specification (MIS) document contains modules, types and methods for implementing the state of a game of Space Shooter. \textcolor{red}{The Space Shooter application is a recreation of the 1980's "Space Invader" arcade game. The goal within the game is to avoid the spaceship from getting hit by upcoming obstacles such as meteors/aliens.}
+
+
+
+\section* {Constants Module}
+\subsection*{Module}
+
+Constants
+
+\subsection* {Uses}
+
+N/A
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+WIDTH = 480\\
+HEIGHT = 600\\
+FPS = 60\\
+POWERUP\_TIME = 5000\\
+BAR\_LENGTH = 100\\
+BAR\_HEIGHT = 10\\
+WHITE = (255, 255, 255)\\
+BLACK = (0, 0, 0)\\
+RED = (255, 0, 0)\\
+GREEN = (0, 255, 0)\\
+BLUE = (0, 0, 255)\\
+YELLOW = (255, 255, 0)\\
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\newpage
+
+
+\section* {In-Game Assets Module}
+
+\subsection*{Module}
+\noindent InGameAssets
+
+\subsection*{Uses}
+\noindent Constants
+
+\subsection*{Syntax}
+\subsubsection*{Exported Constants}
+ img\_dir = path for the operating system to access the folder 'assets' \\
+\newline
+ img\_dir = path for the operating system to access the folder 'sounds' \\
+\newline
+ explosion\_anim = Dictionary that stores the animations of explosion of an enemy when a bullet hits the enemy, explosion of the enemy when a the in-game space ship hits the enemy, and explosion of the in-game space ship when an enemy hits the in-game space ship when the value of the shield on space ship equal to 0\\
+\newline
+ all\_sprite = An object \sout{(of pygame.sprite.Group type)} that collects all of the game objects that need to be displayed on the user interface during the "Playing Game State"\\
+\newline
+ bullets = An object \sout{(of pygame.sprite.Group type)} that collects the game objects(Bullet type) representing the bullets that are fired from the in-game space ship due to users' request and the value of power of the space ship and need to be displayed on the user interface during the "Playing Game State"\\
+\newline
+ powerups = An object \sout{(of pygame.sprite.Group type)} that collects the game objects representing the powerups (Pow type) that need to be displayed on the user interface during the "Playing Game State"\\
+\newline
+ mobs = An object \sout{(of pygame.sprite.Group type)} that collects the game objects (Mob type) that need to be displayed on the user interface during the "Playing Game State"
+\newline 
+shooting\_sound = An object \sout{(of pygame.mixer.Sound type)} that records the data of the sound which need to be played based on the audio stored in pew.wav file when the in-game space ship shoots bullets  
+\newline
+missile\_sound = An object \sout{(of pygame.mixer.Sound type)} that records the data of the sound which need to be played based on the audio stored in rocket.ogg file when the in-game space ship shoots missiles \\
+\newline
+expl\_sounds = A list \sout{of pygame.mixer.Sound type} that collects the sounds which need to be played based on the audio stored in file expl3.wav and expl6.wav when any of the Mob type game objects collide on Player type or Bullet type or Missile type of game objects. \\
+\newline
+player\_die\_sound = An object \sout{(of pygame.mixer.Sound type)} that records the data of the sound which need to be played based on the audio stored in rumble1.ogg file when the Player type game object collide on Mob type game objects when its value of shield equal to 0. \\
+\newline
+player\_img = An object \sout{of pygame.image type} that records the data of the image stored in playerShip1\_orange.png file which represents the appearance of the Player type game object on user interface \\ 
+\newline
+player\_mini\_img = An object of \sout{pygame.transform type} that records the data of the image that has been transformed from player\_img by scaling the player\_img by a proper proportion that suits the dimensions of the user interface \\
+\newline
+bullet\_img = An object \sout{of pygame.image type} that records the data of the image stored in laserRed16.png file which represents the appearance of the Bullet type game objects on user interface \\
+\newline
+missile\_img = An object \sout{of pygame.image type} that records the data of the image stored in missile.png file which represents the appearance of the Missile type game objects on user interface \\
+\newline
+meteor\_images = A list \sout{of pygame.image type} that records the data of the images represents the appearance of the Mob type game objects on user interface. \\
+\newline
+powerup\_images = A dictionary that records the data of the images represents the appearance of the Pow type game objects on user interface. \\
+\newline 
+font\_name = An object of \sout{pygame.font type} that records the data of the font of the text which would be displayed on the user interface \\
+\newline
+background = An object of \sout{pygame.image type} that records the data of the images represents the appearance of the background of the user interface \\
+
+\subsubsection*{Exported Access Program}
+None
+
+\subsection*{Semantics}
+\subsubsection*{Environment Variables}
+assets = folder that stores all of the image files that are necessary to the system 
+\newline
+assets = folder that stores all of the audio files that are necessary to the system 
+\newline
+\textcolor{red}{M\_explosion\_anim\_imgs} = files that stores all of the image files that are necessary for animation of the explosion of the Mob type game objects
+\newline
+\textcolor{red}{P\_explosion\_anim\_imgs} = files that stores all of the image files that are necessary for the animation of  the explosion of the Player type game objects
+\newline
+\textcolor{red}{shoot\_sound\_file} = file that stores the audio for the sound of shooting bullets 
+\newline
+\textcolor{red}{missile\_sound\_file} = file that stores the audio for the sound of shooting missiles
+\newline
+\textcolor{red}{expl\_sound1, expl\_sound2} = files that store the audio for the sound of explosion of Mob type game objects
+\newline
+\textcolor{red}{sound\_of\_death} = file that stores the audio for the sound of explosion of the death of Player type game object 
+\newline
+\textcolor{red}{player\_img\_file} = file that stores the image for the appearance of Player type game object on user interface 
+\newline
+\textcolor{red}{bullet\_img\_file} = file that stores the image for the appearance of Bullet type game object on user interface
+\newline
+\textcolor{red}{missile\_img\_file} =  file that stores the image for the appearance of Missile type game object on user interface
+\newline
+\textcolor{red}{'meteorBrown\_big1',
+'meteorBrown\_big2', 'meteorBrown\_med1', 
+    'meteorBrown\_med3',
+    'meteorBrown\_small1',
+    'meteorBrown\_small2',
+    'meteorBrown\_tiny1'} =  files that store the image for the appearance of Mob type game objects of different sizes on user interface
+\newline
+\newline
+\textcolor{red}{fasterShoot\_img\_file}= file that stores the image for the appearance of Pow type game objects (for faster shooting powerups) on user interface
+\newline
+\textcolor{red}{doubleShoot\_img\_file}= file that stores the image for the appearance of Pow type game objects (for double shooting powerups) on user interface
+\newline
+\textcolor{red}{background\_img\_file} = file that stores the image for the appearance of background of user interface
+
+\newpage
+
+\section* {Game Objects Module}
+\subsection* {Module}
+
+GameObjects
+
+\subsection* {Uses}
+
+\noindent InGameAssets\\
+\noindent Constants 
+
+\subsection* {Exported Types}
+
+Bullet: \textcolor{red}{Object}\\
+Explosion: \textcolor{red}{Object}\\
+Missle: \textcolor{red}{Object}\\
+Mob: \textcolor{red}{Object}\\
+Player: \textcolor{red}{Object}\\
+Pow: \textcolor{red}{Object}\\
+
+
+\subsection* {\underline{Bullet}} 
+\subsection* {Syntax} 
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Bullet & integer, integer & Bullet & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Bullet($x, y$):
+\begin{itemize}
+\item input: x - x-coordinate of bullet, y - y-coordinate of bullet
+\item transition: Initializes all attributes of the Bullet object to the default settings to start the game.
+\item output: Bullet - The newly initialized Bullet object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input:  
+\item transition: Updates the location of the inputted bullet based on the current game state.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{Explosion}} 
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Explosion & integer, integer & Explosion & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Explosion($center, size$):
+\begin{itemize}
+\item input: center - coordinate for explosion to occur, size - size of the explosion
+\item transition: Initializes all attributes of the Explosion object to the default settings to start the game.
+\item output: Explosion - The newly initialized Explosion object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: 
+\item transition: Updates the screen with the explosion animation given the location and size. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{Missile}} 
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Missile & integer, integer & Missile & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Missile($x, y$):
+\begin{itemize}
+\item input: x - x-coordinate of missile, y - y-coordinate of missile
+\item transition: Initializes all attributes of the Missile object to the default settings to start the game.
+\item output: Missile- The newly initialized Missle object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: 
+\item transition: Updates the location of the inputted missile based on the current game state.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{Mob}} 
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Mob & & Mob & None\\
+\hline
+rotate & & & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Mob():
+\begin{itemize}
+\item input: None
+\item transition: None
+\item output: Mob - The newly initialized Mob object
+\item exception: None
+\end{itemize}
+
+\noindent rotate():
+\begin{itemize}
+\item input: None
+\item transition: Rotates the mob object every 50 milliseconds.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: None
+\item transition: Updates the position attributes of the mob object, and re-positions the mob to a random start position if it goes out of bounds. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{\textcolor{red}{Alien}}}
+\subsection* {\textcolor{red}{Syntax}}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Alien & & Alien & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {\textcolor{red}{Semantics}}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Alien():
+\begin{itemize}
+\item input: None
+\item transition: None
+\item output: Alien - The newly initialized Alien object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: None
+\item transition: Updates the position attributes of the alien object, and re-positions the alien to a random start position if it goes out of bounds. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{Player}} 
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Player & & Player & None\\
+\hline
+update & & & None\\
+\hline
+shoot & & & None\\
+\hline
+powerup & \textcolor{red}{integer} & & \textcolor{red}{IndexError}\\
+\hline
+hide & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent Player():
+\begin{itemize}
+\item input: None
+\item transition: Initializes all attributes of the Player object to the default settings to start the game.
+\item output: Player - The newly initialized Player object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: None
+\item transition: Updates the position and state of the player. The state includes if it has a power up, and if it is shooting. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent shoot():
+\begin{itemize}
+\item input: None
+\item transition: Determines the type of shot based on power up, and shoots a bullet object from the player spaceship.  
+\item output: None
+\item exception: None
+\end{itemize}
+
+
+\textcolor{red}{\noindent powerup(i):
+\begin{itemize}
+\item input: i - the index for the corresponding power-up
+\item transition: Updates the power up state of the player. Based on the value of i the power-up state will change: 1 = default, 2 = double bullets, 3 = missle, 4 = rapid fire.
+\item output: None
+\item exception: IndexError - if an invalid power up index is inputted
+\end{itemize}}
+
+\noindent hide():
+\begin{itemize}
+\item input: None
+\item transition: Hides the player object.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\subsection* {\underline{Pow}} 
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Pow & integer & Pow & None\\
+\hline
+update & & & None\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent new Pow($center$):
+\begin{itemize}
+\item input: center - coordinate for power-up to load on
+\item transition: Initializes all attributes of the Power-up object to the default settings to start the game.
+\item output: Pow- The newly initialized Pow object
+\item exception: None
+\end{itemize}
+
+\noindent update():
+\begin{itemize}
+\item input: 
+\item transition: Updates the location of the power-up based on the current game state.
+\item output: None
+\item exception: None
+\end{itemize}
+
+\newpage
+
+\section* {Game Functions Module}
+
+\subsection* {Module}
+
+GameFunctions
+
+\subsection* {Uses}
+
+\noindent InGameAssets\\
+\noindent Constants \\
+\noindent GameObjects 
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+main\_menu & & & None\\
+\hline
+\textcolor{red}{pause\_menu} & & & \textcolor{red}{None}\\
+\hline
+\textcolor{red}{instruction\_page} & & & \textcolor{red}{None}\\
+\hline
+draw\_text & screen, string, integer, integer, integer & & \textcolor{red}{NullReferenceException}\\
+\hline
+draw\_shield\_bar & screen, integer, integer, integer & & \textcolor{red}{NullReferenceException}\\
+\hline
+draw\_lives & screen, integer, integer, integer, .png & & \textcolor{red}{NullReferenceException}\\
+\hline
+newmob & & & None\\
+\hline
+\textcolor{red}{newalien} & & & \textcolor{red}{None}\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+None
+
+\subsubsection* {Access Routine Semantics}
+
+main\_menu():
+\begin{itemize}
+\item input: None
+\item transition: Loads respective menu screen and music based on the keys pressed on keyboard. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent \textcolor{red}{pause\_menu():
+\begin{itemize}
+\item input: None
+\item transition: Loads respective menu screen and music based on the keys pressed on keyboard. 
+\item output: None
+\item exception: None
+\end{itemize}}
+
+\noindent \textcolor{red}{instruction\_page():
+\begin{itemize}
+\item input: None
+\item transition: Loads instruction page screen and music based on the keys pressed on keyboard. 
+\item output: None
+\item exception: None
+\end{itemize}}
+
+\noindent draw\_text($surf, text, size, x, y$):
+\begin{itemize}
+\item input: surf - surface of screen to display text, text - text to display, size - font size, x - x-coordinate to display text, y - y-coordinate to display text
+\item transition: Selects a cross-platform text to display the text on the device the game is opened on.
+\item output: None
+\item exception: \textcolor{red}{NullReferenceException - Passing in Null value for the input parameters}
+\end{itemize}
+
+\noindent draw\_shield\_bar($surf, x, y, pct$):
+\begin{itemize}
+\item input: surf - surface of screen to display shield bar, x - x-coordinate to display text, y - y-coordinate to display text, pct - current health level of spaceship
+\item transition: Draws the shield bar based on the current health level of the spaceship.
+\item output: None
+\item exception: \textcolor{red}{NullReferenceException - Passing in Null value for the input parameters}
+\end{itemize}
+
+\noindent draw\_lives($surf, x, y, lives, img$):
+\begin{itemize}
+\item input: surf - surface of screen to display lives, x - x-coordinate to display text, y - y-coordinate to display text, lives - number of lives remaining, img - image to display for each live
+\item transition: Draws the amount of lives left for the spaceship based on the current game situation.
+\item output: None
+\item exception: \textcolor{red}{NullReferenceException - Passing in Null value for the input parameters} 
+\end{itemize}
+
+\noindent newmob():
+\begin{itemize}
+\item input: None
+\item transition: Constantly adds meteors during the game. 
+\item output: None
+\item exception: None
+\end{itemize}
+
+\noindent \textcolor{red}{newalien():}
+\begin{itemize}
+\item \textcolor{red}{input: None}
+\item \textcolor{red}{transition: Constantly adds aliens during the game.}
+\item \textcolor{red}{output: None}
+\item \textcolor{red}{exception: None}
+\end{itemize}
+
+\newpage
+
+\section* {Game State Module}
+
+\subsection*{Module}
+
+GameState
+
+\subsection* {Uses}
+
+\noindent GameObjects\\
+\noindent GameFunctions
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | l |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+display\_update\_gamestate & & & \textcolor{red}{RuntimeError}\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+$running$: bool\\
+$menu\_display$: bool\\
+
+\subsubsection* {Environment Variables}
+
+None
+
+\subsubsection* {Assumptions \& Design Decisions}
+
+\begin{itemize}
+
+\item The Game State module invokes objects and functions from other modules and has no functions of its own besides "display\_update\_gamestate()". This design choice allows for information hiding. 
+
+\item The module runs a game loop which contains all game functionality, and constantly updates checks user key inputs, updates the states of all game objects (including spaceship), and graphically updates the game. 
+
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\noindent display\_upadate\_gamestate():
+\begin{itemize}
+\item input: None
+\item transition: 
+Intializes graphics and sounds, then runs the "game loop" which constantly updates based on the user input and status of the game. The loop manages the menu operations of starting the game, viewing instructions, pausing the game, and quiting. The loop manages game mechanics which updates graphics, check for spaceship colliding with other objects, and updating health, score, and power ups.
+\item output: None
+\item exception: \textcolor{red}{RuntimeError - when there are errors caused during the duration of the playing game state}
+\end{itemize}
+
+\newpage
+
+
+\end {document}

@@ -1,0 +1,320 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\usepackage{float}
+\restylefloat{table}
+
+
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Software Requirements Specification\\Space Shooter}
+
+\author{Team \#105, Space Shooter
+		\\ Hongzhao Tan, tanh10
+		\\ Nishanth Raveendran, raveendn
+		\\ Dananjay Prabaharan, prabahad
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[H]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+02/09/2020 & 1.0 & Initial Software Requirements Specification\\
+03/13/2020 & 1.1 & Requirements Update\\
+\textcolor{red}{04/02/2020} & \textcolor{red}{1.2} & \textcolor{red}{Rev1 Update - Updated Functional and Non-Functional Requirements}\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{Project Drivers}
+
+\subsection{The Purpose of the Project}
+
+The purpose of the project is to provide a fun and refreshing gaming experience to people who are missing classic games from years ago. The reference game in its current form is quick and fun, but the development team is trying to revamp the game by adding a clean user interface, new game-play features, and cleaning up the existing code to ensure easy maintenance. The new game features include increased mobility, new enemy types, and more power-ups. All of this is to create more of a challenge and keep the player more engaged.
+
+\subsection{The Stakeholders}
+
+\subsubsection{The Client}
+
+The clients of this project consists of the 3XA3 Software Engineering Practice and Experience course teaching assistants, and the professor, Dr. Bokhari. The primary concern for the clients is to see that the outcome of the project is an enhanced and upgraded version of the original reference game. 
+
+\subsubsection{The Customers}
+
+The target demographic of this game is aimed at people who are looking for a casual gaming experience. This includes adults who miss the nostalgic feel of older games from previous eras should find comfort in playing Space Shooter. Additionally, kids who want to have fun playing a video game are included as a customer. Generally, the consumer base consists of anyone that has access to a Windows system that is looking for a fun and quick way to entertain themselves. 
+
+\subsubsection{Other Stakeholders}
+
+There are many other stakeholders involved in this project. The development team is a major stakeholder, as they are responsible for upgrading the original reference game. The development team has their own desires for what the overall outcome should be, some of which include technical aspects such as efficiency, run time, and code cleanliness. The general public is a stakeholder since they will be exposed to the game and make up the consumer base. The desires of the general public are heavily considered in determining the features added, and user experience updates. 
+
+\subsection{Mandated Constraints}
+
+The main mandated constraints for this project involve the due dates for project deliverables. The final version of the project must be complete with documentation by April 6, 2020. The project must not be made from scratch - it must have a reference material and be a redesign of it. This means the final project will have a similar design and functionality of the original, but also additional unique features. The project must be able to run on Windows systems and be played with a keyboard. 
+
+\subsection{Naming Conventions and Terminology}
+
+For this project, the development team will be using the camel case naming standards. Variables,  classes, and files will be named with descriptive names to provide a little understanding of the purpose of them. 
+
+\subsection{Relevant Facts and Assumptions}
+
+\subsubsection{Relevant Facts}
+
+The original space shooter reference game consists of one Python file with 560 lines of code. The game is based on and inspired by the original Nintendo game, "Space Invaders". 
+
+\subsubsection{Assumptions}
+
+The project team is making a few assumptions on user characteristics, as we do not have access to research and conduct surveys for our user base. The game will be available on Windows systems, so it is assumed that the user has a working keyboard to play the game. It is also assumed that the user is familiar with common symbols used in games, such as the health bar and power ups.   
+
+
+\section{Functional Requirements}
+
+\subsection{The Scope of the Work and the Product}
+\textcolor{red}{The scope of the Space Shooter project is to revamp the existing game with additional unique features such as further direction control capabilities and more interactive objects.} The development team also plans on fixing the existing project using common coding practices by modularizing the code and adding more functions.
+
+\subsubsection{The Context of the Work}
+The Space Shooter game is an arcade game where the user must survive in its spaceship for as long as possible while avoiding getting hit by upcoming meteors and aliens. \textcolor{red}{The player can control the spaceship by moving left, right, up and down on the screen and shooting bullets.} The intended audience of the Space Shooter project are kids and adults who miss the nostalgic feel of older arcade games. 
+
+\subsubsection{Work Partitioning}
+\begin{table}[H]
+\begin{tabular}{|c|p{5cm}|p{5cm}|}
+\hline
+Event Name & Input/Output & Summary \\ 
+\hline
+Destroy Asteroid/Aliens & Spaceship shoots multiple bullets to respective alien (out) & The user destroys an upcoming obstacle by shooting a bullet to the asteroid/alien. Some objects may be required to be hit more than others in order to be destroyed. \\ 
+\hline
+Spaceship Destruction & Spaceship loses all health (out) & The user's spaceship is destroyed in the game when it loses all its health after being hit multiple times by incoming obstacles. \\ 
+\hline
+Spaceship Movement & User enters in directional keyboard input (in) & The spaceship moves according to the user's input on the keyboard (right arrow for moving right, left arrow for moving left, and etc) \\ 
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Individual Product Use Cases}
+The primary use case of the product is for the game to be played with. The user would have a fun experience when playing the game and have a nostalgic feeling of the 1980s. 
+
+\subsection{Functional Requirements}
+ \textbf{F1:} The game is intended to run offline on a Windows or MacOS operating system.\\
+ \newline
+\textcolor{red}{ \textbf{F2:} The game shall have 4 main states: "Pre-Game State", "Playing Game State" and "Paused State".}\\
+ \newline
+ \textcolor{red}{ \textbf{F3:} The main-menu would be in the "Pre-Game State". The game shall display the main menu when first launched by the user. The main menu would display three options: Play, Instructions, and Quit.}\\   
+ \newline
+ \textbf{F4:} If the user selects the Play option, the game shall proceed to the "Playing Game State" where the user plays the main game in.\\
+ \newline
+ \textbf{F5:} If the user selects the Instruction option, the game shall proceed to the Instruction Screen.\\
+ \newline
+ \textbf{F6:} As the user is in the "Playing Game State", the game shall redirect to the "Paused State" if the user clicks the pause button during the game.\\
+ \newline
+\textcolor{red}{  \textbf{F7:} If the unpaused button is clicked in the "Paused State", the game shall resume back to the "Playing State" where the user left their progress in.}\\
+ \newline
+ \textcolor{red}{ \textbf{F8:} The "Playing Game State" shall always contain the score, number of lives and health bar at the top.}\\
+ \newline
+ \textbf{F9:} The score in the "Playing Game State" shall always start at 0 for each new game. The score should increase by destroying meteors and aliens.  \\
+ \newline
+ \textbf{F10:} The health bar in the "Playing Game State" shall always restart to 100/100 after each new game. \\
+ \newline
+ \textbf{F11:} If the spaceship is hit by an upcoming meteor from the top of the screen, the spaceship's health shall decrease by an amount proportional to the meteor radius. \\
+ \newline
+\textcolor{red}{ \textbf{F12:} If the spaceship is hit by an upcoming alien from the top of the screen, the spaceship's health shall decrease by 20 percent. }\\
+ \newline
+ \textbf{F13:} The spaceship shall have the ability to move in 4 directions: up, down, left, and right. \\
+ \newline
+ \textbf{F14:} The spaceship shall have the ability to shoot upcoming obstacles with bullets. The spaceship would have unlimited bullets with strengths determined by its power-ups. \\
+ \newline
+\textcolor{red}{\textbf{F15:} If the spaceship collides with the "Faster Shooting" power-up, the spaceship shall shoot bullets twice the speed for 5 seconds.} \\
+ \newline
+\textcolor{red}{\textbf{F16:} If the spaceship collides with the "Double Shooting" power-up, the spaceship shall shoot two bullets at a time for 5 seconds.}\\
+ \newline
+\textcolor{red}{\textbf{F17:} If the spaceship collides with the "Shield" power-up, the spaceship gain a boost of 30\% of health.}\\
+ \newline
+\textcolor{red}{\textbf{F18:} If the spaceship collides with the "Missle" power-up, the spaceship begins shooting missles for 5 seconds. The missles shall continue colliding with upcoming obstacles even if it had already hit one in the past, unlike the bullets.}\\
+ \newline
+\textcolor{red}{ \textbf{F19:} If the spaceship contains 0/100 health during the "Playing Game State", the game shall redirect to the "Pre-Game State" where it displays the main-menu.}\\
+
+
+\section{Non-functional Requirements}
+
+\subsection{Look and Feel Requirements}
+
+\textbf{NF1: Appearance Requirements}
+\newline
+After starting, the product shall generate a multicolored space ship at the bottom middle of the user interface with a background of an "space" scene. The generated space ship shall be colored to be well-marked and able to keep user's attention on it while using the product.\newline \newline
+Space Shooter shall generate bright colored laser from the space ship upon users' requests. Space Shooter shall generate solid colored meteorites. The product shall display an animation of explosion upon collisions between certain in-game objects.\newline \newline
+The colors of the background shall not cover up color of any in-game object. All text in Space Shooter shall be written in reasonably sized fonts. The program shall be sized to properly fit on majority types of electronic devices' screen. \newline
+
+
+\noindent \textbf{NF2: Style Requirements}
+\newline
+Space Shooter shall generate meteorites in a pace that the meteorites can make the users feel intense atmosphere while not making the user interface too cluttered.
+
+\subsection{Usability and Humanity Requirements}
+
+\textbf{NF3: Ease of Use Requirements}
+\newline
+The product shall be able to be used by any person with appendages
+\newline
+
+\noindent \textbf{NF4: Ease of Learning Requirements}
+\newline
+The user shall be able to operate a keyboard and a mouse and read English. 
+
+\subsection{Performance Requirements}
+
+\textbf{NF5: Speed Requirements}
+\newline
+The product shall respond to users' requests sent to the system immediately by human perception.
+\newline
+
+\noindent \textbf{NF6: Safety Critical Requirements}
+\newline
+The product shall not do harm to users' data and device.
+\newline
+
+
+\noindent \textcolor{red}{\textbf{NF7: Reliability and Availability Requirements}
+\newline
+The product shall be available whenever it is installed on users' local devices at any time when the devices' random access memory is under maximum load. The product's defect rate shall be less than 1 failure per 200 hours of operation. }
+\newline
+
+\noindent \textcolor{red}{\textbf{NF8: Capacity Requirements}
+\newline
+The game shall not exceed uses' local devices' random access memory.}
+
+\subsection{Operational and Environmental Requirements}
+
+\noindent \textcolor{red}{\textbf{NF9: Operational Requirements}
+\newline
+Users shall need to install the external software of the product on their devices to run Space Shooter.}
+\newline
+
+\noindent \textcolor{red}{\textbf{NF10: Expected Physical Environment}
+\newline
+The Product shall be able to be used in anywhere there is a device with Space Shooter installed on it and enough random access memory to run the system, a keyboard and a mouse that can be used to control the space ship.
+\newline}
+
+\noindent \textcolor{red}{\textbf{NF11: Expected Technological Environment}
+\newline
+The product shall be used on many types of devices that can open a window big enough to fit in the user interface. The medium that will be carrying out the product's user interface will be the generated window on devices' screen. }
+
+\subsection{Maintainability and Support Requirements}
+
+\noindent \textcolor{red}{\textbf{NF12: Maintainability Requirements}
+\newline
+The product shall be properly modularized so that modification on a specific function of the product shall be easily implemented.}
+\newline
+
+\noindent \textcolor{red}{\textbf{NF13: Support Environment}
+\newline
+The product shall ensure the target clients are capable of running it on their devices.}
+
+\subsection{Security Requirements}
+
+\noindent \textcolor{red}{\textbf{NF14: Access Requirements}
+\newline
+The entire general public shall have access to the necessary infrastructure of the product.}
+\newline
+
+\noindent \textcolor{red}{\textbf{NF15: Integrity Requirements}
+\newline
+Source code of the product shall not be altered by any operation on the user interface (playing the game).\newline
+The product shall reject invalid user requests and inputs.}
+\newline
+
+\noindent \textcolor{red}{\textbf{NF16: Privacy Requirements}
+\newline
+The product shall not leak out any data outside itself from users' devices.}
+
+\subsection{Cultural Requirements}
+
+\noindent \textcolor{red}{\textbf{NF17: Cultural Requirements}
+\newline
+The product shall not contain any element(symbols, text, etc.) that could be considered as offensive to any culture.\newline
+The product shall be available in English.}
+
+\subsection{Legal Requirements}
+
+\noindent \textcolor{red}{\textbf{NF18: Legal Requirements}
+\newline
+The product shall not violate any law.\newline
+The product shall not contain any symbol, typeface and logo that requires license which the development team don't have. }
+
+\subsection{Health and Safety Requirements}
+
+\noindent \textcolor{red}{\textbf{NF19: Health and Safety Requirements}
+\newline
+The product shall not do any harm to human body\newline
+The product shall suggest the users to stop using itself when it has been continuously used for a long time.}
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+Since technology in these days evolves really fast, the hardware and software in the future could be extraordinarily different from what we have now. It is hard to forecast whether the product will work fine in the future or not and how should the product react to the coming changes. In addition, the product has not been test on all main operating systems on electrical devices (PC, Mobile) and it is also not known if the product will work on new created operating systems that will be employed by majority of popularity in the future. Also, because the users' locals device will be hosting the product, the issues of the local machines would affect the product.  
+
+\subsection{Off-the-Shelf Solutions}
+Since the original implementation is from an open source project, the development team could rely on it as a prototype and source of code.\newline Also, there are currently plenty of space shooter games in different languages which could provide the development team some ideas on implementing Space Shooter.
+
+\subsection{New Problems}
+Space Shooter is not likely to be the only software application in users' devices. Nevertheless, if the random access memory of user's device is not enough to run all of the application that is simultaneously working, the product could cause shut down to other running application in the device.\newline
+In addition, since there are many other implementation of the space shooter type games, the development team shall be careful on not to infringe on others' copyrights.
+\subsection{Tasks}
+
+The schedule of deliverables and tasks are all covered in the dynamic Gantt Chart of the development team which can be found from the following link:
+ \url{https://gitlab.cas.mcmaster.ca/raveendn/space-shooter/blob/master/ProjectSchedule/Project\%20Gantt\%20Chart.gan}
+
+\subsection{Migration to the New Product}
+None
+\subsection{Risks}
+There is very little risk for the product to do harm to user's body physically, since it is a game. However, the development team still shall be careful on the risks that could injure the users indirectly such that the product shall not be too poorly optimized which could slow down or even overheating the user's device.
+\subsection{Costs}
+As long as the development tools and documentation tools remain free, and the original reference product keeps being open-source, there will be no cost for developing the product.  
+\subsection{User Documentation and Training}
+The development team shall use the (""") format for docstring to give description to all of the modules, classes and functions in the source code of the product written with Python. 
+\subsection{Waiting Room}
+In addition to the objects that could destroy the space ship in the original project, new enemy types would be added into the game. Powerups to the lasers and additional mobility would be also added to the in-game space ship.
+
+\subsection{Ideas for Solutions}
+The development team could define new Python classes for the new enemy types and powerups to the lasers, and modifying the original source code in the module for defining the movement of space ship to add mobility to the ship.
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\newpage
+
+\section{Appendix}
+
+This section has been added to the Volere template.  This is where you can place
+additional information.
+
+\subsection{Symbolic Parameters}
+
+The definition of the requirements will likely call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+
+\end{document}

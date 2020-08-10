@@ -1,0 +1,691 @@
+\documentclass[12pt, titlepage]{article}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=red,
+    urlcolor=blue
+}
+\usepackage[round]{natbib}
+
+\title{SE 3XA3: Test Plan\\SpaceShooter}
+
+\author{Team \#105, Space Shooter
+		\\ Dananjay Prabaharan - prabahad
+		\\ Nishanth Raveendran - raveendn
+		\\ Hongzhao Tan - tanh10
+}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+\tableofcontents
+\listoftables
+\listoffigures
+
+\begin{table}[bp]
+\caption{\bf Revision History}
+\begin{tabularx}{\textwidth}{p{3cm}p{2cm}X}
+\toprule {\bf Date} & {\bf Version} & {\bf Notes}\\
+\midrule
+02/28/2020 & 1.0 & Initial Test Plan\\
+\midrule
+\textcolor{red}{04/06/2020} & \textcolor{red}{1.1} & \textcolor{red}{Rev1 Update - Test Plan with updated Tests for Functional Requirements} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\newpage
+
+\pagenumbering{arabic}
+
+\section{General Information}
+
+\subsection{Purpose}
+
+The function of the program is to run a 2D arcade style game that will provide a fun, refreshing gaming experience to people who are missing classic games from years ago. The purpose of testing this project is to ensure the game provides a smooth experience without any hiccups. Testing will build confidence that all of the game features and functionality have been implemented correctly.
+
+\bigskip
+
+The development team will be using Green, which is a fast and clean python test runner that has more detailed descriptions of tests which is more convenient for the developers. The functional tests will be based off of the functional requirements, and will be done using black box testing which ignores the implementation. 
+To test the coverage of the code, the team will be using Coverage.py, which is an automated way to monitor the parts of the code that have been executed. Fault testing will be implemented in all areas of the code to ensure robustness of the software. 
+
+\subsection{Scope}
+
+The Test Plan provides a foundation for testing the features and functionality of the redesign of the 2D arcade game, SpaceShooter. The new version of SpaceShooter revamps the original game with the addition of new features, and to ensure these new additions run correctly, tests must be implemented. These new features include an improved user interface, new game-play features, and modularization of the code. All of these aspects must be thoroughly tested in order for the final program to run smoothly. 
+
+\subsection{Acronyms, Abbreviations, and Symbols}
+	
+\begin{table}[hbp]
+\caption{\textbf{Table of Abbreviations}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3cm}X}
+\toprule
+\textbf{Abbreviation} & \textbf{Definition} \\
+\midrule
+GUI & Graphical User Interface\\
+\bottomrule
+\end{tabularx}
+
+\end{table}
+
+\begin{table}[!htbp]
+\caption{\textbf{Table of Definitions}} \label{Table}
+
+\begin{tabularx}{\textwidth}{p{3.5cm}X}
+\toprule
+\textbf{Term} & \textbf{Definition}\\
+\midrule
+Structural Testing & Testing derived from the internal structure of the software.\\
+Functional Testing & Testing derived from a description of how the program functions.\\
+Dynamic Testing & Testing which includes having test cases run during execution.\\
+Static Testing & Testing that does not involve program execution.\\
+Manual Testing & Testing conducted by people.\\
+Automated Testing & Testing that is run automatically by software.\\
+\bottomrule
+\end{tabularx}
+
+\end{table}	
+
+\subsection{Overview of Document}
+
+\section{Plan}
+	
+\subsection{Software Description}
+Space Shooter is a recreation of the Python game project which is also called 'Space Shooter'. The system shall allow its user controls an in-game space ship flying in a rectangular piece of space. Simultaneously, there are obstacles flying in the piece of space from top to bottom. As the ultimate goal of the game, user shall try to control the space ship to survive as long as possible by avoid letting the ship collide on any obstacle. The system shall also allow the user to control the space ship to shoot lasers which can destroy the obstacles.  
+\subsection{Test Team}
+The test team for this project consists of all of the members in Team \#105 which includes: Hongzhao Tan, Nishanth Raveendran, Dananjay Prabaharan
+\subsection{Automated Testing Approach}
+The test team has decided that only strict manual approach would be used for testing due to many reasons which includes but not limits to: Lack of canvas environment testing framework support, Lack of time resource given. Hence, automated testing approach would not be employed to test the system. 
+\subsection{Testing Tools}
+Since the test team will be only using manual approach to test the system, there would be only electrical devices with all major operating system and appropriate software and hardware configuration used as tools for testing.
+\subsection{Testing Schedule}
+		
+See Gantt Chart at the following url: \url{https://gitlab.cas.mcmaster.ca/raveendn/space-shooter/-/blob/master/ProjectSchedule/Project%20Gantt%20Chart.pdf}
+
+GanttProject File at the following url:
+\url{https://gitlab.cas.mcmaster.ca/raveendn/space-shooter/-/blob/master/ProjectSchedule/Project%20Gantt%20Chart.gan}
+
+\section{System Test Description}
+	
+\subsection{Tests for Functional Requirements}
+
+\subsubsection{Buttons}
+
+\paragraph{Main Menu}
+
+\begin{enumerate}
+
+\item{FS-MM-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+\textcolor{red}{Initial State: Screen is initially at the Main Menu Screen displaying three options: Play, Instructions, and Quit.}
+					
+\textcolor{red}{Input: User clicks 'Play' Key}
+					
+Output: Program redirects to the 'Playing Game State' where the user could play the game.
+					
+How test will be performed: Through manual testing, the developers would check if the main menu buttons direct to the appropriate screen.
+					
+\item{FS-MM-2\\}
+
+Type: Functional, Dynamic, Manual
+					
+\textcolor{red}{Initial State: Screen is initially at the Main Menu Screen displaying three options: Play, Instructions, and Quit.}
+					
+\textcolor{red}{Input: User clicks 'Instructions' Key}
+					
+Output: Program directs to the 'Pre-Game State' where the user could read the instructions to the game.
+					
+How test will be performed: Through manual testing, the developers would check if the main menu buttons direct to the appropriate screen.
+
+\item\textcolor{red}{FS-MM-3\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+					
+\textcolor{red}{Initial State: Screen is initially at the Main Menu Screen displaying three options: Play, Instructions, and Quit. }
+					
+\textcolor{red}{Input: User clicks 'Quit' Key}
+					
+\textcolor{red}{Output: Program quits and disappears from the user's screen.}
+					
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the main menu buttons direct to the appropriate screen.}
+
+\item{FS-MM-4\\}
+
+Type: Functional, Dynamic, Manual
+					
+\textcolor{red}{Initial State: Screen is initially at the Instruction Screen.}
+					
+Input: User clicks 'Back' Button
+					
+Output: Program directs to the 'Pre-Game State' where the user is at the Main Menu Screen.
+					
+How test will be performed: Through manual testing, the developers would check if the main menu buttons direct to the appropriate screen.
+
+\item\textcolor{red}{FS-MM-5\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+		
+\textcolor{red}{Initial State: Screen is initially at the Main Menu Screen displaying three options: Play, Instructions, and Quit.}
+					
+\textcolor{red}{Input: User clicks 'Play' Key and immediately hits the 'Instruction' Key}
+					
+\textcolor{red}{Output: Program displays error stating "Instructions Page cannot be displayed while launching the game" }
+
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the main menu buttons direct to the appropriate screen.}
+
+\end{enumerate}
+
+\paragraph{Paused}
+
+\begin{enumerate}
+
+\item{FS-P-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game State'.
+					
+Input: User clicks 'Pause' Button
+					
+Output: Program redirects to the 'Paused State' where the user is at the paused game state.
+					
+How test will be performed: Through manual testing, the developers would check if the game buttons direct to the appropriate screen.
+					
+\item\textcolor{red}{FS-P-2\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Paused State'.}
+					
+\textcolor{red}{Input: User clicks 'Resume' Key}
+					
+\textcolor{red}{Output: Program directs to the 'Playing Game State' where the user resumes from the left off position and state of the game.}
+
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the game buttons direct to the appropriate screen.}
+
+\item\textcolor{red}{FS-P-3\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Paused State'.}
+					
+\textcolor{red}{Input: User clicks 'Pause' Key while in 'Paused State'}
+					
+\textcolor{red}{Output: Program remains on 'Paused State'}
+
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the game buttons direct to the appropriate screen.}
+
+\item\textcolor{red}{FS-P-4\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Paused State'.}
+					
+\textcolor{red}{Input: User clicks 'Resume' Key and while the program attempts to resume the game, the user immediately clicks the 'Pause' Key}
+					
+\textcolor{red}{Output: Program ignores 'Resume' Key request and redirects back to the 'Paused State'}
+
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the game buttons direct to the appropriate screen.}
+
+\item\textcolor{red}{FS-P-5\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Paused State'.}
+					
+\textcolor{red}{Input: User clicks 'Quit' Key while in 'Paused State'.}
+					
+\textcolor{red}{Output: Program quits and disappears from the user's screen.}
+
+\textcolor{red}{How test will be performed: Through manual testing, the developers would check if the game buttons direct to the appropriate screen.}
+
+\end{enumerate}
+
+\subsubsection{Movement and Shooting}
+
+\paragraph{Spaceship Movement Operations}
+
+\begin{enumerate}
+
+\item{FS-M-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game' State. 
+					
+Input: User presses one directional control button (right/left/up/down). 
+					
+Output: Spaceship immediately moves to the respective direction based on what the user presses.  
+					
+How test will be performed: The function that moves the spaceship during the 'Playing Game State' would run. Afterwards, the developers would check if the spaceship would move accordingly to the direction controls.
+
+\item\textcolor{red}{FS-M-2\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game' State.}
+					
+\textcolor{red}{Input: User presses one directional key and immediately presses another directional key while pressing the original key too (ex: press 'right' followed by 'left').}
+					
+\textcolor{red}{Output: Spaceship should move in the direction of the second directional input and ignore the first directional input when pressing both at the same time.}
+
+\textcolor{red}{How test will be performed: The function that moves the spaceship during the 'Playing Game State' would run. Afterwards, the developers would check if the spaceship would move accordingly to the direction controls.}
+
+\item\textcolor{red}{FS-M-3\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game' State.}
+					
+\textcolor{red}{Input: User presses two directional keys at the same time (ex: press 'right' and 'left' together).}
+					
+\textcolor{red}{Output: Spaceship shall not move and maintain its position of where it was left off.}
+
+\textcolor{red}{How test will be performed: The function that moves the spaceship during the 'Playing Game State' would run. Afterwards, the developers would check if the spaceship would move accordingly to the direction controls.}
+
+\end{enumerate}
+
+\paragraph{Spaceship Shooting Operations}
+
+\begin{enumerate}
+
+\item{FS-S-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game' State. 
+					
+Input: User presses shooting button at a upcoming obstacle.
+					
+Output: An animation would proceed where a bullet comes from the spaceship and hits the respective obstacle. The obstacle would receive damage based on the number of bullets that hits it. If it receives its max damage, it explodes.
+					
+How test will be performed: The function that shoots bullets from the spaceship would run. Afterwards, the developers would check if the spaceship would check through multiple simulations if the correct output is executed for its respective input. 
+					
+\end{enumerate}
+
+\subsubsection{Collision}
+
+\paragraph{Collision Detection}
+
+\begin{enumerate}
+
+\item{FS-CD-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game State' where obstacles are approaching the spaceship.
+					
+Input: Obstacle collides with the spaceship.  
+					
+Output: Spaceship loses health according to size/power of the obstacle. 
+					
+How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles. 
+
+\item\textcolor{red}{FS-CD-2\\}
+	
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+				
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where a "Faster Shooting" power-up is approaching the spaceship.}
+					
+\textcolor{red}{Input: "Faster Shooting" power-up collides with the spaceship.}
+					
+\textcolor{red}{Output: The spaceship shoots bullets twice the speed for 5 seconds.}
+
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles.}
+
+\item\textcolor{red}{FS-CD-3\\}
+			
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+		
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where a "Double Shooting" power-up is approaching the spaceship.}
+					
+\textcolor{red}{Input: "Double Shooting" power-up collides with the spaceship.}
+
+\textcolor{red}{Output: The spaceship shoots two bullets at a time for 5 seconds.}
+
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles.}
+
+\item\textcolor{red}{FS-CD-4\\}
+	
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+				
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where a "Shield" power-up is approaching the spaceship.}
+					
+\textcolor{red}{Input: "Shield" power-up collides with the spaceship.}
+					
+\textcolor{red}{Output: The spaceship is gains a boost of 30\% of health.}
+
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles.}
+
+\item\textcolor{red}{FS-CD-5\\}
+	
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+				
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where a "Missile" power-up is approaching the spaceship.}
+					
+\textcolor{red}{Input: "Missile" power-up collides with the spaceship.}
+					
+\textcolor{red}{Output: The spaceship begins to start shooting missiles for 5 seconds.}
+
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles.}
+
+\item\textcolor{red}{FS-CD-6\\}
+	
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+				
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where the spaceship is already in effect from a previous power-up.}
+					
+\textcolor{red}{Input: A power-up collides with the spaceship while it still has effect from a previous power-up.}
+					
+\textcolor{red}{Output: The spaceship stacks the power-ups and uses both at the same time.}
+
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests would be executed to check if the spaceship detects collisions from various receiving angles.}
+					
+\end{enumerate}
+
+\subsubsection{Death}
+
+\begin{enumerate}
+
+\item{FS-D-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game State' where obstacles are approaching the spaceship. Spaceship is close to losing all health.
+					
+Input: Obstacle collides with the spaceship, causing the health bar to be at 0. 
+					
+Output: Spaceship's destroyed and the game is redirected to the 'Pre-Game State' with the Main Menu Screen.
+					
+How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests with various scenarios would be executed to check how the spaceship would react when it loses all health. 
+
+\item\textcolor{red}{FS-D-2\\}
+
+\textcolor{red}{Type: Functional, Dynamic, Manual}
+
+\textcolor{red}{Initial State: Screen is initially at the 'Playing Game State' where obstacles are approaching the spaceship. Spaceship is close to losing all health.}
+					
+\textcolor{red}{Input: Obstacle collides with the spaceship, causing the health bar to be \textbf{below 0}.}
+					
+\textcolor{red}{Expected Output: Spaceship's destroyed and the game is redirected to the 'Pre-Game State' with the Main Menu.}
+		
+\textcolor{red}{How test will be performed: The function that detects collision and manages the spaceship's health would run. Multiple tests with various scenarios would be executed to check how the spaceship would react when it loses all health.}
+			
+\end{enumerate}
+
+\subsection{Tests for Nonfunctional Requirements}
+
+\subsubsection{Look and Feel}
+		
+\paragraph{Player Test}
+
+\begin{enumerate}
+
+\item{NFS-LF-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The system is initially at the "Pre-Game State"
+					
+Input/Condition: An actual person outside of the game 
+					
+Output/Result: The person plays through the game for a reasonable number of times
+					
+How test will be performed: A person with the knowledge of how to control the in-game space ship and the goal of the game acts as a player of the game. With all of the necessary hardware and software provided, the person plays the game from before clicking the 'Play' Button to the 'Death' of the space ship for a number of times that was agreed with consensus of members of the test team. After the times of playing, the person will be asked to answer questions with regards to the look and feel of the system. 
+
+\end{enumerate}
+
+\subsubsection{Usability and Humanity}
+
+\paragraph{Player Test}
+
+\begin{enumerate}
+
+\item{NFS-UH-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The system is initially at the "Pre-Game State"
+					
+Input/Condition: An actual person outside of the game 
+					
+Output/Result: The person plays through the game for a reasonable number of times
+					
+How test will be performed: A person who has no or very little experience on playing games in general and can read English fluently given only the knowledge of what keys on the provided input devices he can press to operate the system and the goal of the game acts as a player of the game. With all of the necessary hardware and software provided, the person plays the game from right after launching the system to the 'Death' of the space ship for a number of times that was agreed with consensus of members of the test team. After the times of playing, the person will be asked to answer questions to check if the person knows what does pressing each of the keys told him under different states of the system shall do to the system. 
+
+\end{enumerate}
+
+\subsubsection{Performance}
+
+\paragraph{Response Speed Test}
+
+\begin{enumerate}
+
+\item{NFS-P-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The system is initially at the "Pre-Game State"
+					
+Input/Condition: An actual person outside of the game, A list of all possible and reasonable requests could be sent to the system 
+					
+Output/Result: The person does every single possible and reasonable operations on the given list to the system.
+					
+How test will be performed: A person with knowledge of how to operate the system with the provided input devices and how does the system supposed to respond to the different requests sent to it under different scenarios will be given a list of requests designed by the test team. On a electrical device that has appropriate hardware and software configuration and sufficient random access memory left to operate the system fluently, the person shall manually send the requests to the system in order to test if there is any human realizable delay on the responds to the requests.  
+
+\end{enumerate}
+
+\paragraph{Availability Test}
+
+\begin{enumerate}
+
+\item{NFS-P-2\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: The system is initially closed.
+					
+Input/Condition: A member of the test team, All major operating system
+					
+Output/Result: An operational instance of the system
+					
+How test will be performed: The system is supposed to be able to run on any major operating system, as long as the user has the system downloaded locally on his device. Hence, the member of the test team shall launch the system with all operating systems and play the game for a number of times based on consensus of the test team to test if the system is functioning fluently and as expected.
+
+\end{enumerate}
+
+\subsubsection{Maintainability}
+
+\paragraph{Modularization Inspection}
+\begin{enumerate}
+\item{NFS-M-1\\}
+
+Type: Structural, Static, Manual
+                
+Initial State: The system is initially closed
+                
+Input/Condition: Source code of the system, Inspectors
+                
+output/Result: Verification of proper modularization
+                
+How test will be performed: Members of the test team shall inspect the system's source code to ensure the system is properly modularized such that each module only hides one record characteristic that is likely to change in the future, and the classes in the system are correctly distributed among the modules according to the software architecture chosen by the developers of the system.
+
+\end{enumerate}
+
+\paragraph{Documentation Inspection}
+\begin{enumerate}
+\item{NFS-M-2\\}
+
+Type: Structural, Static, Manual
+                
+Initial State: The system is initially closed
+                
+Input/Condition: Source code of the system, Inspectors
+                
+output/Result: Verification of proper docstring documentation
+                
+How test will be performed: Members of the test team shall inspect the system's source code to ensure the system is properly documented with docstring such that every module, class, methods, and global variable are well documented with correct format and concise lucid description.
+
+\end{enumerate}
+
+\subsubsection{Cultural Requirement}
+\paragraph{Text and Symbol Inspection}
+\begin{enumerate}
+
+\item{NFS-C-1\\}
+Type: Structural, Static, Manual
+
+Initial State: The system is initially closed
+
+Input/Condition: Source code, Symbols and pictures referenced in the source code of the system, Inspectors
+
+Output/Result: Verification of no existence of potential offense to any culture
+
+How test will be performed: Members of the test team shall inspect the system's source code to ensure there is not any text or symbol that could be displayed on the GUI of the system has any potential to be considered as offensive to any culture being used in the implementation of the system. 
+\end{enumerate}
+
+\subsection{Traceability Between Test Cases and Requirements}
+
+\begin{table}[!htbp]
+	\begin{tabular}{ll}
+		\toprule
+		Test & Requirements \\
+		\midrule
+		\multicolumn{2}{c}{Functional Requirements Testing} \\
+		\midrule
+		FS-MM-1 & F2, F3, F4 \\
+		FS-MM-2 & F2, F3, F5 \\
+		FS-MM-3 & F2, F3, F4 \\
+		FS-MM-4 & F2, F3, F5 \\
+		FS-MM-5 & F2, F3, F5 \\
+		FS-P-1 & F2, F6 \\
+		FS-P-2 & F2, F7 \\
+		FS-P-3 & F2, F6 \\
+		FS-P-4 & F2, F6, F7 \\
+		FS-P-5 & F2, F6 \\
+		FS-M-1 & F13 \\
+		FS-M-2 & F13 \\
+		FS-M-3 & F13 \\
+		FS-S-1 & F14\\
+		FS-CD-1 & F11, F12 \\
+		FS-CD-2 & F11, F12 \\
+		FS-CD-3 & F11, F12 \\
+		FS-CD-4 & F11, F12 \\
+		FS-CD-5 & F11, F12 \\
+		FS-CD-6 & F11, F12 \\
+		FS-D-1 & F15 \\
+		FS-D-2 & F15 \\
+		\midrule
+		\multicolumn{2}{c}{Non-functional Requirements Testing} \\
+		\midrule
+		NFS-LF-1 & NF1, NF2 \\
+		NFS-UH-1 & NF3, NF4 \\
+		NFS-P-1 & NF5 \\
+		NFS-P-2 & NF7 \\
+		NFS-M-1 & NF12, NF13 \\
+		NFS-M-2 & NF12, NF15 \\
+		NFS-C-1 & NF17 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Trace Between Tests and Requirements}
+	% Colour for the rulings in tables:
+	\makeatletter
+	\def\rulecolor#1#{\CT@arc{#1}}
+	\def\CT@arc#1#2{%
+		\ifdim\baselineskip=\z@\noalign\fi
+		{\gdef\CT@arc@{\color#1{#2}}}}
+	\let\CT@arc@\relax
+	\rulecolor{black}
+	\makeatother
+	\label{Table}
+\end{table}
+\newpage
+\section{Tests for Proof of Concept}
+
+The proof of concept for SpaceShooter goes over the additions of the new features and redesign. This includes modularizing the code, and creating a new, cleaner user interface. Gameplay additions include involving an in game store, adding more directional control of the ship, and including new interactive objects (enemies, powerups, etc.). 
+
+\bigskip
+In the original proof of concept, the game closed when the player died. The goal for the redesign is to have a better user interface which has an end game screen which displays stats and allows the player to replay or return to the main menu. This issue was resolved and tested using the ‘Main Menu’ and ‘Paused’ tests based on the functional requirements. These tests ensure the player has access to all of these screens even after the player dies. 
+
+\bigskip
+The primary issue of the original proof of concept is that the code is all in one file and not modularized. This is very messy and does not follow proper coding practices. Having consistency tests will ensure the program functions identically to the original reference game after modularizing the code. 
+
+\subsection{Proof of Concept Tests}
+		
+\paragraph{Consistency Tests}
+
+\begin{enumerate}
+
+\item{PCS-C-1\\}
+
+Type: Functional, Dynamic, Manual
+					
+Initial State: Screen is initially at the 'Playing Game' state
+					
+Input: A person who has played the original reference game will play the game until the ship dies
+					
+Output/Result: The person plays through the game a number of times, while taking note of how the game functions.
+					
+How test will be performed: A person who has played the original game with a solid understanding of how it functions will play the updated version which has modularized code. The game functions should be identical, and the purpose of this test is to ensure that everything runs smoothly. 
+					
+\item{PCS-C-2\\}
+
+Type: Structural, Static, Manual
+					
+Initial State: The system is initially closed
+					
+Input: The source code of the system, code inspectors 
+					
+Output/Result: Verification of method functionality
+					
+How test will be performed: A development team member will perform a dry run and ensure each method runs identically to the original without errors. The main purpose of this test is to ensure the functions can still communicate with each other after modularization of the code.
+
+\end{enumerate}
+
+\section{Unit Testing Plan}
+Unit Testing would be conducted on this project using the 'unittest' Python framework.
+		
+\subsection{Unit testing of internal functions}
+Several unit tests would be executed for the internal functions of the program. Internal functions that return values within the program could be unit tested using the assert command from the 'unittest' framework. The team's plan is to have at least 3-5 assert commands per each function/method in the program. \textcolor{red}{Stubs and drivers would not be utilized during the testing phase as most of the added modules/features would be independent and not rely on one another.} In order to adequately test the entire program, our team would be utilizing the coverage test method. The coverage test method is a measurement based on the percentage of the original source code that is being tested. The team's goal for the coverage test measurement in our codebase is 75\%. 
+
+		
+\subsection{Unit testing of output files}		
+As no files are being outputted within the SpaceShooter program, unit testing is not necessary for this component. 
+
+
+\bibliographystyle{plainnat}
+
+\bibliography{SRS}
+
+\newpage
+
+\section{Appendix}
+
+\subsection{Symbolic Parameters}
+
+The definition of the test cases will call for SYMBOLIC\_CONSTANTS.
+Their values are defined in this section for easy maintenance.
+
+\subsection{Usability Survey Questions?}
+Look and Feel Questions:\\
+- Could the shape and color configurations of the space ship make the space ship well-marked ?\\
+- Are you satisfied with how the lasers and animation of explosion looks like ?\\
+- Is there any in-game object covered up by the color of the game's background when you were playing ?\\
+- Do you think the sizes and fonts that are used for the text in the system is appropriate ?\\
+- Have you ever felt intense when you were playing the game ?\\
+- Have you ever felt the graphical user interface (The graphics displayed on the game window) been cluttered when you were playing the game ?\\
+
+
+
+
+\end{document}
